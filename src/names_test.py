@@ -15,8 +15,8 @@ def main():
     print(selec)
 
     print(get_compound_names(names_freq))
-    most_commons_names_per_year(names_freq)
-    show_evolution_year(names_freq, "HUGO")
+    print(most_commons_names_per_year(names_freq))
+    #show_evolution_year(names_freq, "JUAN JOSE")
 
 if __name__ == "__main__":
     main()

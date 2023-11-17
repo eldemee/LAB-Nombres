@@ -45,15 +45,13 @@ def get_compound_names(names:List[NameFreq], g:Optional[str]=None) -> Set[str]:
     return {s.name for s in names if ' ' in s.name and (g==None or g==s.gender)}
 
 #EX 7
-def most_commons_names_per_year(names:List[NameFreq]):
+def most_commons_names_per_year(names:List[NameFreq]) -> List[Tuple[int, str]]:
     dic = defaultdict(list)
     for s in names:
         year = s.year
         dic[year].append((s.name, s.frequency))
-    orden = sorted(dic.items(),key=lambda x:x[1][1][1], reverse=True)
-    for s in orden:
-        print(s[0], s[1][1][0])
-    return orden
+    frequency = [(s[0], s[1][1][0]) for s in dic.items()]
+    return frequency
 
 
 #EX 8
