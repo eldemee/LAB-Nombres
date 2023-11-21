@@ -16,7 +16,10 @@ def main():
 
     print(get_compound_names(names_freq))
     print(most_commons_names_per_year(names_freq))
-    #show_evolution_year(names_freq, "JUAN JOSE")
+    #show_evolution_year(names_freq, ["JUAN JOSE", "ANTONIO"])
+    nombre = "MARIA"
+    print(f" El nombre {nombre} se ha usado: {get_freq_by_names(names_freq)[nombre]} veces")
+    show_names_freqs(names_freq)
 
 if __name__ == "__main__":
     main()

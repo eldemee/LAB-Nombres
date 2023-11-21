@@ -62,9 +62,33 @@ def get_year_frequencies(names: List[NameFreq], name: str) -> List[Tuple[int,int
             d[s.year] += s.frequency
     return sorted(d.items())
 
+#EX 9
+def show_evolution_year(names: List[NameFreq], name:List) ->None:
+    for n in name: 
+        year, freq = zip(*get_year_frequencies(names, n))
+        plt.plot(year, freq)
+        plt.title(f"Evolición nombre {n}")
+        plt.show()
 
-def show_evolution_year(names: List[NameFreq], name:str) ->None:
-    year, freq = zip(*get_year_frequencies(names, name))
-    plt.plot(year, freq)
-    plt.title(f"Evolición nombre {name}")
+#EX 11 AND 12
+def get_freq_by_names(names: List[NameFreq]) -> Dict[str, int]:
+    d = {}
+    nombres = {e.name for e in names}
+    for name in nombres:
+        d[name] = acumulated_frequency(names, name)
+    return d
+
+
+def acumulated_frequency(names: List[NameFreq], n: str) -> int:
+    return sum(name.frequency for name in names if n==name.name)
+    
+
+#EX 12
+def show_names_freqs(names: List[NameFreq], limit:int=10) -> None:
+    acumulated_frequency = sorted(get_freq_by_names(names).items(), key=lambda n:n[1], reverse=True )[:limit]
+    nombres, freq = zip(*acumulated_frequency)
+
+    plt.bar(nombres, freq)
+    plt.xticks(rotation = 80)
+    plt.title(f"Top {limit} nombres mas comunes")
     plt.show()
